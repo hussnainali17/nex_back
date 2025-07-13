@@ -12,9 +12,10 @@ const RequestRoutes=require('./Routes/Request.routes');
 const mailRoutes=require('./Routes/mail.routes');
 dotenv.config();
 app.use(cors({
-    origin: process.env.Frontend_URL, // Replace with your frontend URL
+    origin: process.env.FRONTEND_URL, // Replace with your frontend URL
     credentials: true
 }));
+
 
 // app.use(cors({
 //   //origin: 'https://final-front-g5tb.onrender.com', // React frontend URL
