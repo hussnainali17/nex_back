@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const userModel = require('../models/user.model');
+const userModel = require('../Models/user.model');
 const bcrypt = require('bcrypt');
 
 module.exports.authUser=async (req,res,next)=>{
