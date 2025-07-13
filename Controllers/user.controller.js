@@ -71,12 +71,11 @@ module.exports.login=async (req,res)=>{
 
     
         const token=user.generateAuthToken();
-        res.cookie('token', token, {
-          httpOnly: true, // Prevents client-side JavaScript access
-          sameSite: 'Lax', // Or 'Lax' depending on your needs
-          path: '/', // Cookie valid for the entire domain
-          //expires: new Date(Date.now() + 3600000) // Optional: set expiration time (1 hour)
-        });
+      res.cookie("token", token, {
+  httpOnly: true,
+  secure: true,         // ✅ because you're on HTTPS (Render)
+  sameSite: 'None'      // ✅ allows cross-origin cookie use
+});
         
         res.status(200).json({token,user});
     } catch (error) {

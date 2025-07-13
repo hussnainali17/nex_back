@@ -26,13 +26,11 @@ router.get('/verify-email', async (req, res) => {
       verified: true
     });
     const token1 = newUser.generateAuthToken();
-    res.cookie('token', token1, {
-          httpOnly: true, // Prevents client-side JavaScript access
-          sameSite: 'Lax', // Or 'Lax' depending on your needs
-          path: '/', // Cookie valid for the entire domain
-          //expires: new Date(Date.now() + 3600000) // Optional: set expiration time (1 hour)
-        });
-
+    res.cookie("token", token1, {
+  httpOnly: true,
+  secure: true,         // ✅ because you're on HTTPS (Render)
+  sameSite: 'None'      // ✅ allows cross-origin cookie use
+});
     res.redirect(`${process.env.FRONTEND_URL}/verify-email?verified=true&role=${role}&token=${token1}&userId=${newUser._id}`);
   } catch (err) {
     console.error(err);
