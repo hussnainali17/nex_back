@@ -28,7 +28,7 @@ router.get('/verify-email', async (req, res) => {
     const token1 = newUser.generateAuthToken();
     res.cookie('token', token1, {
           httpOnly: true, // Prevents client-side JavaScript access
-          sameSite: 'Strict', // Or 'Lax' depending on your needs
+          sameSite: 'Lax', // Or 'Lax' depending on your needs
           path: '/', // Cookie valid for the entire domain
           //expires: new Date(Date.now() + 3600000) // Optional: set expiration time (1 hour)
         });
